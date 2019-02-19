@@ -1,4 +1,4 @@
-.landing-card-body {
+.card-body {
   background: #ffffff;
   width: calc(50vw - 100px);
   height: 500px;
@@ -8,15 +8,15 @@
   align-items: center;
 }
 
-.landing-card-title {
+.card-title {
   margin: 0;
   padding: 0;
   font-size: 3em;
   padding: 50px 0 50px 0;
 }
 
-.landing-card-button {
-  background: #bfbebe;
+.card-button {
+  background: #555555;
   color: white;
   font-size: 1.8em;
   width: 40%;
@@ -27,17 +27,19 @@
   justify-content: center;
 }
 
-.landing-card-button:hover {
-  background: #555555;
+.button:hover {
+  background: #373737;
+  color: white;
 }
 
-.landing-card-button:active {
+.button:active {
   background: #292929;
   color: rgb(164, 164, 164);
 }
 
-.manage-event-list {
-
+.manage-event-list > ul{
+  list-style: none;
+  padding-left: 0;
 }
 
 .manage-event-list-item {
@@ -59,10 +61,11 @@
 }
 
 .manage-event-list-item-button {
-  width: 100px;
+  width: 80px;
   height: 30px;
-  background: #ffffff;
-  color: black;
+  border-radius: 3px;
+  background: #555555;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;

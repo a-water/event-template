@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
-import LandingCard from './Cards/LandingCard';
-import LandingCardButton from './Cards/LandingCardButton';
-import LandingCardList from './Cards/LandingCardList';
+import Card from './Cards/Card';
+import CardButton from './Cards/CardButton';
+import CardList from './Cards/CardList';
 
 class Landing extends Component {
   constructor(props) {
@@ -23,9 +23,9 @@ class Landing extends Component {
     return(
       <div>
           <Nav />
-          <div className="landing-card-parent">
-              <LandingCard title="Create">
-                <LandingCardButton buttonTitle="New event" onClick={ this.renderCreateNewEvent } visibleClass= { this.state.formHidden ? "" : "element-hidden"}/>
+          <div className="card-parent">
+              <Card title="Create">
+                <CardButton buttonTitle="New event" onClick={ this.renderCreateNewEvent } visibleClass= { this.state.formHidden ? "" : "element-hidden"}/>
                 <form className={ this.state.formHidden ? "new-event-form element-hidden" : "new-event-form" }>
                   <label>Name</label>
                   <input type="text"/>
@@ -36,10 +36,10 @@ class Landing extends Component {
                   <br />
 
                 </form>
-              </LandingCard>
-              <LandingCard title="Manage">
-                <LandingCardList />
-              </LandingCard>
+              </Card>
+              <Card title="Manage">
+                <CardList />
+              </Card>
           </div>
       </div>
     );
