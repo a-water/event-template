@@ -1,0 +1,12 @@
+.mainNav {
+  height: 50px;
+  background: #68778b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainNav p{
+  color: white;
+  font-size: 1.2em;
+}
