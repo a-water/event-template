@@ -41,6 +41,21 @@ app.post('/api/createEvent', (req, res) => {
   
 });
 
+app.get('/api/retrieveEvent', (req, res) => {
+  console.log('Retrieve Event', req.query);
+  // TODO: validate request
+
+  Event.findOne({ _id: req.query.eventId })
+    .then(events => {
+      console.log('Event found:', events);
+      res.status(200).json(events);
+    })
+    .catch(err => {
+      console.log('Error find event:', err);
+      res.status(404).json(err);
+    });
+});
+
 app.get('/api/retrieveEvents', (req, res) => {
   console.log('Retrieve Events', req.query);
   // TODO: validate request

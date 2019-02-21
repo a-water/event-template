@@ -10,7 +10,7 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component= { Landing } />
-            <Route exact path="/manage" component= { Manage } />
+            <Route path='/manage/:eventId' component={ Manage }/>
           </Switch>
         </div>      
       </BrowserRouter>

@@ -5,7 +5,7 @@ class CardList extends Component {
   renderListItems(listData) {
     return(
       this.props.listData.data.map(event => {
-        return <CardListItem title={ event.title } buttonText="Manage" key={ event.title } />
+        return <CardListItem title={ event.title } buttonText="Manage" key={ event.title } eventId={ event._id }/>
       })
     );
   }
