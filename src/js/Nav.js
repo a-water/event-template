@@ -4,7 +4,7 @@ class Nav extends Component {
   render() {
     return (
       <div className="mainNav">
-        <p>Event Template</p>
+        <p>Event Manager</p>
       </div>
     );
   }

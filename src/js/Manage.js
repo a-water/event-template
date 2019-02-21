@@ -33,7 +33,7 @@ class Manage extends Component {
       <div>
         <Nav />
         <div className="card-parent">
-          <Card title={ this.state.stateEvent ? this.state.stateEvent.title: "" }>
+          <Card title={ this.state.stateEvent ? this.state.stateEvent.data.title: "" }>
             <div className="attendees-title">
               <h1>Attendees:</h1>
             </div>

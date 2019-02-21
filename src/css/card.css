@@ -27,6 +27,10 @@
   justify-content: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .button:hover {
   background: #373737;
   color: white;
