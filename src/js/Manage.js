@@ -10,17 +10,16 @@ class Manage extends Component {
     super(props);
 
     this.state = {
-      eventTitle: '',
-      attendees: []
+      stateEvent: ''
     };
   }
 
   componentWillMount() {
     const { eventId } = this.props.match.params;
     axios.get(`/api/retrieveEvent?eventId=${ eventId }`)
-      .then(event => {
+      .then(event => {        
         this.setState({
-          eventTitle: event.data.title
+          stateEvent: event
         });
       })
       .catch(err => {
@@ -29,13 +28,16 @@ class Manage extends Component {
       });
   }
 
-  render() {
+  render() {    
     return(
       <div>
         <Nav />
         <div className="card-parent">
-          <Card title={ this.state.eventTitle ? this.state.eventTitle : "" }>
-            <CardList />
+          <Card title={ this.state.stateEvent ? this.state.stateEvent.title: "" }>
+            <div className="attendees-title">
+              <h1>Attendees:</h1>
+            </div>
+            <CardList listData={ this.state.stateEvent } isPeopleList={ true }/>
           </Card>
         </div>
       </div>

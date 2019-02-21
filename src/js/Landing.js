@@ -76,7 +76,7 @@ class Landing extends Component {
                 </form>
               </Card>
               <Card title="Manage">
-                <CardList listData={ this.state.retrieveEventsResponse }/>
+                <CardList listData={ this.state.retrieveEventsResponse } isLanding= { true }/>
               </Card>
           </div>
       </div>

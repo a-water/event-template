@@ -1,0 +1,11 @@
+.attendees-title {
+  border-bottom: 1px solid #68768c;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.attendees-title > h1 {
+  margin: 0;
+}
