@@ -12,7 +12,7 @@ class Landing extends Component {
     this.state = {
       formHidden: true,
       newEventName: '',
-      res: ''
+      retrieveEventsResponse: ''
     }
 
     this.renderCreateNewEvent = this.renderCreateNewEvent.bind(this);
@@ -29,10 +29,10 @@ class Landing extends Component {
   fetchAndRenderExistingEvents() {
     axios.get('/api/retrieveEvents')
       .then(events => {
-        this.setState({"res": events})
+        this.setState({"retrieveEventsResponse": events})
       })
       .catch(err => {
-        this.setState({"res": err})
+        this.setState({"retrieveEventsResponse": err})
       });
   }
 
@@ -46,9 +46,9 @@ class Landing extends Component {
 
     let formData = this.state.newEventName;
     axios.post('/api/createEvent', { eventName: formData })
-      .then(res => {
+      .then(retrieveEventsResponse => {
         // success
-        console.log(res);
+        console.log(retrieveEventsResponse);
       }).catch(error => {
         // fail
         console.log('ERROR occured');
@@ -76,7 +76,7 @@ class Landing extends Component {
                 </form>
               </Card>
               <Card title="Manage">
-                <CardList listData={ this.state.res }/>
+                <CardList listData={ this.state.retrieveEventsResponse }/>
               </Card>
           </div>
       </div>
