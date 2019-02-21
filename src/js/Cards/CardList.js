@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import CardListItem from './CartListItem';
 
 class CardList extends Component {
+  renderListItems(listData) {
+    return(
+      this.props.listData.data.map(event => {
+        return <CardListItem title={ event.title } buttonText="Manage" key={ event.title } />
+      })
+    );
+  }
+
   render() {
     return(
       <div className="manage-event-list">
         <ul>
-          <CardListItem title="One" buttonText="Manage" onClick="" />
-          <CardListItem title="Two" buttonText="Manage" onClick="" />
-          <CardListItem title="Three" buttonText="Manage" onClick="" />
+          { this.props.listData ? this.renderListItems(this.props.listData) : <h1>Loading...</h1> }
         </ul>
       
       </div>
