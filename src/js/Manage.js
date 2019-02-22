@@ -22,6 +22,7 @@ class Manage extends Component {
     axios.delete('/api/deleteEvent', { params: {id: eventId} })
       .then(confirmation => {
         console.log('Event deleted', confirmation);
+       this.props.history.push('/');
       })
       .catch(err => {
         console.log('Error deleting event', err);

@@ -50,6 +50,11 @@ a {
   color: rgb(164, 164, 164);
 }
 
+.manage-event-list {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
 .manage-event-list > ul{
   list-style: none;
   padding-left: 0;
