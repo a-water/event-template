@@ -16,12 +16,12 @@
 }
 
 .card-button {
-  background: #555555;
+  background: #68758d;
   color: white;
   font-size: 1.8em;
   width: 40%;
   height: 30%;
-  border-radius: 6px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,9 +47,9 @@ a {
 }
 
 .manage-event-list-item {
-  background: #bfbebe;
+  background: #68768c;
   color: white;
-  border-radius: 6px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +68,7 @@ a {
   width: 80px;
   height: 30px;
   border-radius: 3px;
-  background: #555555;
+  background: #a5a7b4;
   color: white;
   display: flex;
   align-items: center;

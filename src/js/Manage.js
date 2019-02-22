@@ -56,8 +56,10 @@ class Manage extends Component {
               id={ this.state.stateEvent ? this.state.stateEvent.data._id : "" }/>
           </Card>
         </div>
-        <div className="delete-event-button button" onClick={ this.deleteEvent }>
-            Delete Event
+        <div className="sub-card-manage">
+          <div className="delete-event-button button" onClick={ this.deleteEvent }>
+              Delete Event
+          </div>
         </div>
       </div>
     )

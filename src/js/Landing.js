@@ -48,7 +48,8 @@ class Landing extends Component {
     axios.post('/api/createEvent', { eventName: formData })
       .then(retrieveEventsResponse => {
         // success
-        console.log(retrieveEventsResponse);
+        this.fetchAndRenderExistingEvents();
+        this.setState({ formHidden: true })
       }).catch(error => {
         // fail
         console.log('ERROR occured');
