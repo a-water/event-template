@@ -3,6 +3,7 @@ import Nav from './Nav';
 import Card from './Cards/Card';
 import CardList from './Cards/CardList';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Manage extends Component {
 
@@ -45,6 +46,13 @@ class Manage extends Component {
     return(
       <div>
         <Nav />
+        <Link to="/">
+          <div className="around-card-manage">
+            <div className="around-card-button cancel-manage button">
+                Go Back
+            </div>
+          </div>
+        </Link>
         <div className="card-parent">
           <Card title={ this.state.stateEvent ? this.state.stateEvent.data.title: "" }>
             <div className="attendees-title">
@@ -56,8 +64,8 @@ class Manage extends Component {
               id={ this.state.stateEvent ? this.state.stateEvent.data._id : "" }/>
           </Card>
         </div>
-        <div className="sub-card-manage">
-          <div className="delete-event-button button" onClick={ this.deleteEvent }>
+        <div className="around-card-manage">
+          <div className="around-card-button delete-manage button" onClick={ this.deleteEvent }>
               Delete Event
           </div>
         </div>

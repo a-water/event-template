@@ -10,13 +10,13 @@
   margin: 0;
 }
 
-.sub-card-manage {
+.around-card-manage {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.delete-event-button {
+.around-card-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +24,14 @@
   width: 200px;
   height: 30px;
   margin-top: 20px;
-  margin-bottom: 20px;
-  background: #de4646;
   color: white;
+}
+
+.cancel-manage {
+  background: #8f7d7d;
+}
+
+.delete-manage {
+  background: #de4646;
+  margin-bottom: 20px;
 }

@@ -1,12 +1,12 @@
 /* Component CSS imports */
 @import './nav.css';
-@import './landing-action.css';
 @import './card.css';
 @import './form.css';
 @import './manage.css';
 /*                       */
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:700');
 
 body {
   width: 100%;
