@@ -84,6 +84,22 @@ app.post('/api/updateEvent', (req, res) => {
     });
 });
 
+app.delete('/api/deleteEvent', (req, res) => {
+  console.log('Delete Event', req.query.id);
+  // TODO: validate request
+
+  Event.findOneAndDelete({ _id: req.query.id })
+    .then(event => {
+      console.log("Deleted event", event);
+      res.status(200).json(event);
+    })
+    .catch(err => {
+      console.log('Error trying to delete event', err);
+      res.status(500).json(err);
+    })
+  
+})
+
 app.listen(port, () => {
   console.log('Server started listening on port ', port);
 });

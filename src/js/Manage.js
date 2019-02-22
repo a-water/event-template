@@ -12,6 +12,19 @@ class Manage extends Component {
     this.state = {
       stateEvent: ''
     };
+
+    this.deleteEvent = this.deleteEvent.bind(this);
+  }
+
+  deleteEvent() {
+    const { eventId } = this.props.match.params;
+    axios.delete('/api/deleteEvent', { params: {id: eventId} })
+      .then(confirmation => {
+        console.log('Event deleted', confirmation);
+      })
+      .catch(err => {
+        console.log('Error deleting event', err);
+      });
   }
 
   componentWillMount() {
@@ -42,6 +55,9 @@ class Manage extends Component {
               isPeopleList={ true } 
               id={ this.state.stateEvent ? this.state.stateEvent.data._id : "" }/>
           </Card>
+        </div>
+        <div className="delete-event-button button" onClick={ this.deleteEvent }>
+            Delete Event
         </div>
       </div>
     )
