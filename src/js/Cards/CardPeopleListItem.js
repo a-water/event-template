@@ -6,7 +6,7 @@ class CardListItem extends Component {
     return(
       <li className="manage-event-list-item">
         { this.props.name }
-        <CardListItemButton buttonText={ this.props.buttonText } />
+        <CardListItemButton buttonText={ this.props.buttonText } personName={ this.props.name } onClick={ this.props.onClick }/>
       </li>
     )
   }

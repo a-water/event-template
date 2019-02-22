@@ -37,7 +37,10 @@ class Manage extends Component {
             <div className="attendees-title">
               <h1>Attendees:</h1>
             </div>
-            <CardList listData={ this.state.stateEvent } isPeopleList={ true }/>
+            <CardList 
+              listData={ this.state.stateEvent } 
+              isPeopleList={ true } 
+              id={ this.state.stateEvent ? this.state.stateEvent.data._id : "" }/>
           </Card>
         </div>
       </div>

@@ -71,6 +71,19 @@ app.get('/api/retrieveEvents', (req, res) => {
     });  
 });
 
+app.post('/api/updateEvent', (req, res) => {
+  console.log('Update Event', req.body.id);
+  // TODO: validate request
+
+  Event.findOneAndUpdate({ _id: req.body.id }, { $set:{attendees: req.body.attendees}}, { new: true })
+    .then(document => {
+      res.status(200).json(document);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    });
+});
+
 app.listen(port, () => {
   console.log('Server started listening on port ', port);
 });

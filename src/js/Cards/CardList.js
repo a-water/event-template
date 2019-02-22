@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import CardListItem from './CartListItem';
 import CardPeopleListItem from './CardPeopleListItem';
+import axios from 'axios';
 
 class CardList extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleDeleteAttendee = this.handleDeleteAttendee.bind(this);
+  }
+
+  handleDeleteAttendee(attendeeToRemove) {
+    let attendees = this.props.listData.data.attendees;
+    attendees = attendees.filter(attendee => attendee !== attendeeToRemove);
+    console.log('attendees', attendees, "id:", this.props.id);
+    
+
+    axios.post('/api/updateEvent', { id: this.props.id, attendees: attendees})
+      .then(event => {
+        console.log('new event:', event);
+      })
+      .catch(err => {
+        console.log('error updating event', err);
+      });
+    
+  }
+
   renderListItems(isPeopleList, listData) {
     if(!isPeopleList) {
       return(
@@ -22,13 +46,11 @@ class CardList extends Component {
               name= { attendee }
               buttonText= "Delete"
               key= { attendee }
+              onClick= { () => this.handleDeleteAttendee(attendee) }
             />
-
         })
       );
     }
-
-    
   }
 
   render() {    
@@ -37,7 +59,6 @@ class CardList extends Component {
         <ul>
           { this.props.listData ? this.renderListItems(this.props.isPeopleList, this.props.listData) : <h1>Loading...</h1> }
         </ul>
-      
       </div>
     )
   }
