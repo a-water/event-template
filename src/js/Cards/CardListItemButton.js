@@ -21,4 +21,4 @@ class CardListItemButton extends Component {
   }
 }
 
-export default CardListItemButton;
+export default withRouter(CardListItemButton);

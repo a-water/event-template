@@ -3,6 +3,7 @@ import Nav from './Nav';
 import Card from './Cards/Card';
 import CardButton from './Cards/CardButton';
 import CardList from './Cards/CardList';
+import EventForm from './EventForm';
 import axios from 'axios';
 
 class Landing extends Component {
@@ -16,6 +17,7 @@ class Landing extends Component {
     }
 
     this.renderCreateNewEvent = this.renderCreateNewEvent.bind(this);
+    this.fetchAndRenderExistingEvents = this.fetchAndRenderExistingEvents.bind(this);
   }
 
   componentWillMount() {
@@ -36,26 +38,6 @@ class Landing extends Component {
       });
   }
 
-  handleInputChange = event => {
-    this.setState({ newEventName: event.target.value });
-  }
-
-  handleFormSubmit = async event => {
-    event.preventDefault();
-    this.setState({ newEventName: '' });
-
-    let formData = this.state.newEventName;
-    axios.post('/api/createEvent', { eventName: formData })
-      .then(retrieveEventsResponse => {
-        // success
-        this.fetchAndRenderExistingEvents();
-        this.setState({ formHidden: true })
-      }).catch(error => {
-        // fail
-        console.log('ERROR occured');
-      });
-  }
-
   render() {
     return(
       <div>
@@ -63,18 +45,7 @@ class Landing extends Component {
           <div className="card-parent">
               <Card title="Create">
                 <CardButton buttonTitle="New event" onClick={ this.renderCreateNewEvent } visibleClass= { this.state.formHidden ? "" : "element-hidden"}/>
-                <form onSubmit={ this.handleFormSubmit } className={ this.state.formHidden ? "new-event-form element-hidden" : "new-event-form" }>
-                  <label>Name</label>
-                  <input type="text" value={ this.state.newEventName } onChange={ this.handleInputChange }/>
-                  <br />
-                  
-                  <label>Contacts CSV</label>
-                  <input type="file"/>
-                  <br />
-
-                  <input type="submit" />
-
-                </form>
+                <EventForm hidden={ this.state.formHidden } onSuccess= { this.fetchAndRenderExistingEvents }/>
               </Card>
               <Card title="Manage">
                 <CardList listData={ this.state.retrieveEventsResponse } isLanding= { true }/>

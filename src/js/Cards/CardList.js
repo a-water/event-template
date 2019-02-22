@@ -20,6 +20,7 @@ class CardList extends Component {
     axios.post('/api/updateEvent', { id: this.props.id, attendees: attendees})
       .then(event => {
         console.log('new event:', event);
+        window.location.reload();
       })
       .catch(err => {
         console.log('error updating event', err);
@@ -29,6 +30,9 @@ class CardList extends Component {
 
   renderListItems(isPeopleList, listData) {
     if(!isPeopleList) {
+      if(!listData.data) {
+        return <h1>Loading...</h1>
+      }
       return(
         listData.data.map(event => {
           return <CardListItem
