@@ -1,28 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+const multer = require('multer');
 
+const upload = multer({ dest: '/tmp/uploads' });
 const Event = require('../DB/Event');
+const csvParser = require('../csv-parser');
 
-router.post('/createEvent', (req, res) => {
+router.post('/createEvent', upload.single('attendeesFile'), (req, res) => {
   console.log('Create Event:', req.body);
-  if(!req.body || !req.body.eventName || req.body.eventName === '') {
-    throw new Error("Failed to get legit event data");
-  }
+  console.log('file info. size:', req.file.size, "path:", req.file.path);
   
-  let newEvent = Event({
-    title: req.body.eventName,
-    attendees: ["bob", "greg", "brad"]
-  });
-  
-  newEvent.save()
-  .then(event => {
-    res.status(200).send({"Event name": req.body.eventName});
-  })
-  .catch(err => {
-    res.status(404).json(err)
-  });
-  
+ csvParser.parseAttendeeCsv(req.file.path)
+  .then(parsedCsv => {
+    // console.log("parsed:", parsedCsv);
+    let newEvent = Event({
+      title: req.body.newEventName,
+      attendees: parsedCsv
+    });
+
+    newEvent.save()
+    .then(event => {
+      res.status(200).send({"Event name": req.body.newEventName});
+    })
+    .catch(err => {
+      console.log('error 500', err);
+      
+      res.status(500).json(err)
+    });
+  });  
 });
 
 router.get('/retrieveEvent', (req, res) => {

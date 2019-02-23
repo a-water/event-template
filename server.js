@@ -17,6 +17,7 @@ mongoose.connect(mongodbAddress, {useNewUrlParser: true})
 // TODO: set collection name so it doesn't default to "test"
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Use event routes to handle API calls
 app.use('/api/', eventRoutes);
